@@ -17,7 +17,7 @@ docker pull hazelcast/management-center:latest
 
 ## 2-  And then run the serviceses with two seperate local terminal for each.
 
-for Managment Center (docker run --rm -p 8080:8080 hazelcast/management-center:latest)
+for Management Center (docker run --rm -p 8080:8080 hazelcast/management-center:latest)
 
 ![Screenshot_12](https://github.com/user-attachments/assets/afb69a28-dfae-4466-9c79-40bc55ed40b6)
 
