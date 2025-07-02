@@ -1,4 +1,4 @@
-# Hello There 👋
+# Hello There! 👋
 
 For today my assignment is : Pull & run Kafka container from Docker Hub in your GCP or AWS cloud machine. (You can use confluent oﬀcial docker- repo ). For being more practical, you can run in your local machine first, and then, you can switch to cloud machine.
 
