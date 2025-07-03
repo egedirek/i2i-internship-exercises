@@ -1,4 +1,4 @@
-# Hello There 👋
+# Hello There! 👋
 
 For today my task was : Use the hazelcast server you set up in HAZELCAST-EX-02 and create sample java program that puts a dummy Person object into the Hazelcast map 10,000 times ( in a for loop). Then, get these objects from the Hazelcast map
 
