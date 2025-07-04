@@ -8,20 +8,20 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data // Lombok: Getter, Setter, toString, equals, hashCode otomatik oluşturur
-@NoArgsConstructor // Lombok: Boş kurucu metot oluşturur
-@AllArgsConstructor // Lombok: Tüm argümanları içeren kurucu metot oluşturur
+@Data // lombok
+@NoArgsConstructor 
+@AllArgsConstructor 
 public class CustomerDTO {
 
     @Schema(description = "Unique ID of the customer", example = "1")
     private Long id;
 
-    @NotBlank(message = "Customer name cannot be blank") // Validation: Boş olamaz
+    @NotBlank(message = "Customer name cannot be blank") 
     @Schema(description = "Full name of the customer", example = "John Doe")
     private String name;
 
-    @Email(message = "Invalid email format") // Validation: Geçerli email formatı olmalı
-    @NotBlank(message = "Email address cannot be blank") // Validation: Boş olamaz
+    @Email(message = "Invalid email format") 
+    @NotBlank(message = "Email address cannot be blank") 
     @Schema(description = "Email address", example = "john.doe@example.com")
     private String email;
 }
