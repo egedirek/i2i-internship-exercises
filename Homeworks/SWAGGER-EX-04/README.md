@@ -5,6 +5,7 @@ For today task: Create a layered Spring Boot RESTful application that provides b
 You may choose to simulate database operations using in-memory data structures such as Map or List. Using a real database is not mandatory.
 
 The application should expose endpoints for the following operations:
+
 •	Create a new customer
 
 •	Retrieve a customer by ID
