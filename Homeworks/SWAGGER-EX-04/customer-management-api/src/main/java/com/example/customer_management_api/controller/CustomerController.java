@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // RESTful API controller olduğunu belirtir
-@RequestMapping("/api/customers") // Tüm endpoint'ler bu path ile başlar
-@Tag(name = "Customer Management", description = "API for managing customer data") // Swagger UI'da grup adı
+@RestController 
+@RequestMapping("/api/customers") 
+@Tag(name = "Customer Management", description = "API for managing customer data") 
 public class CustomerController {
 
     private final CustomerService customerService;
 
-    // Bağımlılık Enjeksiyonu
+    
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @Operation(summary = "Create a new customer") // Swagger UI'da endpoint açıklaması
+    @Operation(summary = "Create a new customer") 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Customer created successfully",
                     content = @Content(mediaType = "application/json",
@@ -35,10 +35,9 @@ public class CustomerController {
             @ApiResponse(responseCode = "400", description = "Invalid input",
                     content = @Content)
     })
-    @PostMapping // HTTP POST metodu için mapping
+    @PostMapping 
     public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
-        // @Valid: DTO'daki validation anotasyonlarını tetikler
-        // @RequestBody: Gelen JSON'ı CustomerDTO nesnesine bağlar
+        
         CustomerDTO createdCustomer = customerService.createCustomer(customerDTO);
         return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED); // 201 Created döndür
     }
@@ -51,9 +50,9 @@ public class CustomerController {
             @ApiResponse(responseCode = "404", description = "Customer not found",
                     content = @Content)
     })
-    @GetMapping("/{id}") // HTTP GET metodu ve path değişkeni
+    @GetMapping("/{id}") 
     public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
-        // @PathVariable: URL'deki id'yi metoda bağlar
+       
         return customerService.getCustomerById(id)
                 .map(customer -> new ResponseEntity<>(customer, HttpStatus.OK)) // 200 OK
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND)); // 404 Not Found
@@ -65,7 +64,7 @@ public class CustomerController {
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = CustomerDTO.class)))
     })
-    @GetMapping // HTTP GET metodu
+    @GetMapping 
     public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
         List<CustomerDTO> customers = customerService.getAllCustomers();
         return new ResponseEntity<>(customers, HttpStatus.OK);
@@ -81,7 +80,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "400", description = "Invalid input",
                     content = @Content)
     })
-    @PutMapping("/{id}") // HTTP PUT metodu
+    @PutMapping("/{id}") // PUT 
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable Long id, @Valid @RequestBody CustomerDTO customerDTO) {
         try {
             CustomerDTO updatedCustomer = customerService.updateCustomer(id, customerDTO);
@@ -98,7 +97,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "404", description = "Customer not found",
                     content = @Content)
     })
-    @DeleteMapping("/{id}") // HTTP DELETE metodu
+    @DeleteMapping("/{id}") // DELETE 
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         if (customerService.deleteCustomer(id)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT); // 204 No Content
